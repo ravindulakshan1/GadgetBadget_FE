@@ -1,0 +1,9 @@
+/*
+-- Query: SELECT * FROM OrderService.Orders_FE
+LIMIT 0, 1000
+
+-- Date: 2021-05-13 22:27
+*/
+INSERT INTO `` (`ItemID`,`Iname`,`Icode`,`Iprice`,`Idesc`) VALUES (0,'Hat','I01',500,'Wearable');
+INSERT INTO `` (`ItemID`,`Iname`,`Icode`,`Iprice`,`Idesc`) VALUES (1,'Cap','I02',350,'Wearable');
+INSERT INTO `` (`ItemID`,`Iname`,`Icode`,`Iprice`,`Idesc`) VALUES (2,'Book','I03',100,'Stationary');
