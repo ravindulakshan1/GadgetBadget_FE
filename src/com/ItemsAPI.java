@@ -43,7 +43,7 @@ public class ItemsAPI extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("Got insert");
 
-		String output = itemObj.insertItem(request.getParameter("itemCode"), 
+		String output = itemObj.insertItem(request.getParameter("itemCode"),
 				 request.getParameter("itemName"), 
 				request.getParameter("itemPrice"), 
 				request.getParameter("itemDesc")); 
@@ -57,8 +57,8 @@ public class ItemsAPI extends HttpServlet {
 		System.out.println("Got here");
 		Map paras = getParasMap(request); 
 		 String output = itemObj.updateItem(paras.get("hidItemIDSave").toString(), 
-		 paras.get("itemCode").toString(), 
-		 paras.get("itemName").toString(), 
+		paras.get("itemName").toString(),		 
+		paras.get("itemCode").toString(),  
 		paras.get("itemPrice").toString(), 
 		paras.get("itemDesc").toString()); 
 		response.getWriter().write(output); 

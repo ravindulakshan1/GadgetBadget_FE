@@ -30,6 +30,7 @@ public class Item {
 	 return con;
 	}
 	
+	// read item
 	public String readItems()
 	{ 
 	 String output = ""; 
@@ -46,6 +47,7 @@ public class Item {
 	 + "<th>Item Name</th><th>Item Code</th>"
 	 + "<th>Item Price</th><th>Item Description</th>" 
 	 + "<th>Update</th><th>Remove</th></tr>"; 
+	 
 	 String query = "select * from Orders_FE"; 
 	 Statement stmt = con.createStatement(); 
 	 ResultSet rs = stmt.executeQuery(query); 
@@ -53,8 +55,7 @@ public class Item {
 	 // iterate through the rows in the result set
 	 while (rs.next()) 
 	 { 
-	// String itemID    = Integer.toString(rs.getInt("ItemID")); 
-	 int itemID    	  = rs.getInt("ItemID");
+	 String itemID    = Integer.toString(rs.getInt("ItemID")); 
 	 String itemName  = rs.getString("Iname"); 
 	 String itemCode  = rs.getString("Icode"); 
 	 Double itemPrice = rs.getDouble("Iprice"); 
@@ -86,9 +87,9 @@ public class Item {
 	return output; 
 	}
 
-	public String insertItem(int id, String code, String name, 
-			 Double price, String desc) 
-			 { 
+	// insert item
+	public String insertItem(String code, String name, String price, String desc)
+	{	
 			 String output = ""; 
 			 try
 			 { 
@@ -104,10 +105,11 @@ public class Item {
 			 PreparedStatement preparedStmt = con.prepareStatement(query); 
 			 
 			 // binding values
-			 preparedStmt.setInt(1, id); 
+			 preparedStmt.setInt(1, 0); 
+			// preparedStmt.setInt(1,Integer.parseInt(id));
 			 preparedStmt.setString(2, name); 
 			 preparedStmt.setString(3, code); 
-			 preparedStmt.setDouble(4, price); 
+			 preparedStmt.setDouble(4, Double.parseDouble(price)); 
 			 preparedStmt.setString(5, desc); 
 			 
 			 // execute the statement
@@ -126,8 +128,8 @@ public class Item {
 			 } 
 	
 			// update item
-			public String updateItem(int ID, String code, String name, 
-			 Double price, String desc) 
+			public String updateItem(String ID, String name, String code, 
+			 String price, String desc) 
 			 { 
 			 String output = ""; 
 			 try
@@ -145,9 +147,9 @@ public class Item {
 			 // binding values
 			 preparedStmt.setString(1, name); 
 			 preparedStmt.setString(2, code); 
-			 preparedStmt.setDouble(3, price); 
+			 preparedStmt.setDouble(3, Double.parseDouble(price)); 
 			 preparedStmt.setString(4, desc); 
-			 preparedStmt.setInt(5, ID); 
+			 preparedStmt.setInt(5, Integer.parseInt(ID)); 
 			 
 			 // execute the statement
 			 preparedStmt.execute(); 
@@ -165,7 +167,7 @@ public class Item {
 			 } 
 			
 			// delete item
-			public String deleteItem(int itemID) 
+			public String deleteItem(String itemID) 
 			 { 
 			 String output = ""; 
 			 try
@@ -181,7 +183,7 @@ public class Item {
 			 PreparedStatement preparedStmt = con.prepareStatement(query); 
 			 
 			 // binding values
-			 preparedStmt.setInt(1, itemID); 
+			 preparedStmt.setInt(1, Integer.parseInt(itemID)); 
 			 
 			 // execute the statement
 			 preparedStmt.execute(); 
